@@ -1,14 +1,9 @@
-// import BooksPage from './pages/BooksPage/BooksPage';
-import ReadersPage from './pages/ReadersPage/ReadersPage';
-// import ReaderProfilePage from './pages/ReaderProfilePage/ReaderProfilePage';
+import BooksPage from './pages/BooksPage/BooksPage';
 
 function App() {
   return (
     <div>
-      {/* Меняй компонент здесь, чтобы проверить разные страницы */}
-      {/* <BooksPage /> */}
-      <ReadersPage />
-      {/* <ReaderProfilePage /> */}
+      <BooksPage />
     </div>
   );
 }
