@@ -1,11 +1,15 @@
-import BooksPage from './pages/BooksPage/BooksPage';
+import ReaderList from '../../components/readers/ReaderList';
+import { mockReaders } from '../../mocks/readers';
 
-function App() {
+const ReadersPage = () => {
+  const readers = mockReaders; 
+  
   return (
     <div>
-      <BooksPage />
+      <h1>Читатели библиотеки</h1>
+      <ReaderList readers={readers} />
     </div>
   );
-}
+};
 
-export default App;
+export default ReadersPage;
