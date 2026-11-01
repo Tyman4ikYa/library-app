@@ -1,13 +1,13 @@
+import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import type { ReactNode } from 'react';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Header />
       <main style={{ flex: 1, padding: '2rem' }}>
-        {children}
+        <Outlet />
       </main>
       <Footer />
     </div>

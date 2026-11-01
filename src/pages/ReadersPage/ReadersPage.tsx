@@ -1,13 +1,14 @@
-import Layout from '../../components/common/Layout';
 import ReaderList from '../../components/readers/ReaderList';
 import { mockReaders } from '../../mocks/readers';
 
 const ReadersPage = () => {
+  const readers = mockReaders; 
+  
   return (
-    <Layout>
+    <div>
       <h1>Читатели библиотеки</h1>
-      <ReaderList readers={mockReaders} />
-    </Layout>
+      <ReaderList readers={readers} />
+    </div>
   );
 };
 
