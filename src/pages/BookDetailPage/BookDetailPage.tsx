@@ -1,13 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { selectBookById } from '../../store/books-slice';
 import type { RootState } from '../../store/store';
 
 const BookDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const books = useSelector((state: RootState) => state.books.items);
   
-  const book = books.find(b => b.id === id);
+  const book = useSelector((state: RootState) => selectBookById(state, id || ''));
 
   if (!book) {
     return (
@@ -27,6 +27,13 @@ const BookDetailPage = () => {
       <p>Жанр: {book.genre}</p>
       <p>Описание: {book.description || 'Нет описания'}</p>
       <p>Статус: {book.isAvailable ? 'Доступна' : 'Выдана'}</p>
+      
+      <button 
+        onClick={() => navigate(`/books/${book.id}/edit`)} 
+        style={{ marginTop: '20px', background: 'blue', color: 'white', padding: '5px 10px' }}
+      >
+        Редактировать
+      </button>
     </div>
   );
 };
