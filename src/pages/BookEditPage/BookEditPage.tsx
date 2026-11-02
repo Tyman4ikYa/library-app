@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectBookById, updateBook } from '../../store/books-slice';
-import type { RootState } from '../../store/store';
+import { selectBookById, updateBookAsync } from '../../store/books-slice';
+import type { RootState, AppDispatch } from '../../store/store';
 
 const BookEditPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   
   const book = useSelector((state: RootState) => selectBookById(state, id || ''));
 
@@ -25,8 +25,9 @@ const BookEditPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(updateBook({ ...book, title, author }));
-    navigate(`/books/${book.id}`);
+    dispatch(updateBookAsync({ ...book, title, author })).then(() => {
+      navigate(`/books/${book.id}`);
+    });
   };
 
   return (
